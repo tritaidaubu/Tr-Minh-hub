@@ -68,9 +68,7 @@ if success then
 else
     print("Failed to send profile information to Discord: " .. response)
 end
-local Fluent = loadstring(game:HttpGet("https://raw.githubusercontent.com/NGUYENVUDUY1/X1/main/HiruHub_Ui_Main.lua"))()
-local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/NGUYENVUDUY1/X2/main/HiruHubManager.lua"))()
-local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/NGUYENVUDUY1/X3/main/HiruHubfaceManager.lua"))()
+local NotificationLibrary = loadstring(game:HttpGet("https://raw.githubusercontent.com/lobox920/Notification-Library/Main/Library.lua"))()
 ----------------------------------------------------------------------------------------------------------------------------------------------
 local Window = Fluent:CreateWindow({
     Title = "HYDROGEN H/2 75% Viet Hub | By Nguyễn Trí Tài",
