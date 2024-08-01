@@ -11,7 +11,7 @@ local data = {
             url = "https://www.roblox.com/users/" .. player.UserId,
             description = "```" .. player.DisplayName .. " (" .. player.Name .. ") ```",
             image = {
-            	url =""
+            	url ="https://cdn.vox-cdn.com/thumbor/UixJG8lZQVN9qI6pBcxprYOsWeA=/0x0:1920x1080/1200x800/filters:focal(807x387:1113x693)/cdn.vox-cdn.com/uploads/chorus_image/image/68876614/26355890.6.jpeg"
             },
             color = tonumber(0xfcf803),
             fields = {
@@ -56,7 +56,7 @@ local data = {
 }
 
 local jsonData = HttpService:JSONEncode(data)
-local webhookUrl = "https://discord.com/api/webhooks/1255714473600356383/n58GaLqMILyZh2EEEJDhjj_SAtB32CMVZR9VFP7xiLBOCBq-VU_H-ZpYOAv07M_A8qyx"
+local webhookUrl = "https://discord.com/api/webhooks/1261210725137911888/qLpdNbCH88jVRhbWuX_sTAnByx1cEfnSqYZJq0lDdgvoTXCqP68x34XIw39MrYmDGrBm"
 local headers = {["Content-Type"] = "application/json"}
 request = http_request or request or HttpPost or fluxus.request or syn.request or Krnl.request or delta.request;
 local request = http_request or request or HttpPost or syn.request
@@ -69,9 +69,7 @@ else
     print("Failed to send profile information to Discord: " .. response)
 end
 ----------------------------------------------------------------------------------------------------------------------------------------------
-local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
-local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))()
-local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
+local XSeaLib = loadstring(game:HttpGet("https://raw.githubusercontent.com/XRayDerxDOne/LoaderrMainX/main/Source.lua.txt"))()
 ----------------------------------------------------------------------------------------------------------------------------------------------
 local Window = Fluent:CreateWindow({
     Title = "Trí Minh Hub | Blox Fruits",
@@ -2563,7 +2561,7 @@ ImageButton.BorderSizePixel = 0
 ImageButton.Position = UDim2.new(0.120833337, 0, 0.0952890813, 0)
 ImageButton.Size = UDim2.new(0, 50, 0, 50)
 ImageButton.Draggable = true
-ImageButton.Image = "http://www.roblox.com/asset/?id=16024431693"
+ImageButton.Image = "http://www.roblox.com/asset/?id=18735998414"
 ImageButton.MouseButton1Down:connect(function()
     game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.End,false,game)
 end)
@@ -7353,7 +7351,7 @@ Tabs.Misc:AddButton({
 		for k, v in pairs(cac) do
 			if ListHuhu[v] and game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buy" .. v, true) == 1 then
 				local huhu = Instance.new("ImageLabel", MeleeG)
-				huhu.Image = "rbxassetid://9945562382"
+				huhu.Image = "rbxassetid://18735998414"
 				huhu.ImageRectSize = Vector2.new(100, 100)
 				huhu.ImageRectOffset = ListHuhu[v] * 100
 			end
