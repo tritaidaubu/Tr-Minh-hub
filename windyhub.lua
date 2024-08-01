@@ -863,7 +863,7 @@ end
                             local bill = Instance.new('BillboardGui',v)
                             bill.Name = 'NameEsp'
                             bill.ExtentsOffset = Vector3.new(0, 1, 0)
-                            bill.Size = UDim2.new(1,200,1,30)
+                            bill.Size = UDim2.new(500,320)
                             bill.Adornee = v
                             bill.AlwaysOnTop = true
                             local name = Instance.new('TextLabel',bill)
@@ -904,7 +904,7 @@ function UpdatePlayerChams()
 						local bill = Instance.new('BillboardGui',v.Character.Head)
 						bill.Name = 'NameEsp'..Number
 						bill.ExtentsOffset = Vector3.new(0, 1, 0)
-						bill.Size = UDim2.new(1,200,1,30)
+						bill.Size = UDim2.new(500,320)
 						bill.Adornee = v.Character.Head
 						bill.AlwaysOnTop = true
 						local name = Instance.new('TextLabel',bill)
@@ -2286,7 +2286,7 @@ ImageButton.BorderSizePixel = 0
 ImageButton.Position = UDim2.new(0.5, 10, 0, 10) 
 ImageButton.AnchorPoint = Vector2.new(0.5, 0) 
 ImageButton.Size = UDim2.new(0, 40, 0, 40)
-ImageButton.Image = "rbxassetid://18149215390"
+ImageButton.Image = "rbxassetid://18737910294"
 
 UICorner.CornerRadius = UDim.new(1, 0) 
 UICorner.Parent = ImageButton
@@ -2342,8 +2342,8 @@ local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/
 local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))()
 local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
 local Window = Fluent:CreateWindow({
-    Title = "さま┊Windy•Hub | Blox Fruits",
-    SubTitle = " By windyisreal#0",
+    Title = "Ak Hub | Blox Fruits",
+    SubTitle = "Ak Gaming Hub",
     TabWidth = 100,
     Size = UDim2.fromOffset(400, 280),
     Acrylic = false, -- The blur may be detectable, setting this to false disables blur entirely
