@@ -1,78 +1,166 @@
-local LocalizationService = game:GetService("LocalizationService")
-local player = game.Players.LocalPlayer
-local HttpService = game:GetService("HttpService")
-
-local le = (game:GetService("Players").LocalPlayer.Data.Level.Value)
-local code = LocalizationService:GetCountryRegionForPlayerAsync(player)
-local data = {
-    embeds = {
-        {
-            title = "Profile Player",
-            url = "https://www.roblox.com/users/" .. player.UserId,
-            description = "```" .. player.DisplayName .. " (" .. player.Name .. ") ```",
-            image = {
-            	url ="https://cdn.vox-cdn.com/thumbor/UixJG8lZQVN9qI6pBcxprYOsWeA=/0x0:1920x1080/1200x800/filters:focal(807x387:1113x693)/cdn.vox-cdn.com/uploads/chorus_image/image/68876614/26355890.6.jpeg"
-            },
-            color = tonumber(0xfcf803),
-            fields = {
-                {
-                    name = "ᴄᴏᴜɴᴛʀʏ",
-                    value = "```" .. code .. "```",
-                    inline = true
-                },
-                {
-                    name = "ᴀɢᴇ",
-                    value = "```" .. player.AccountAge .. " Days```",
-                    inline = true
-                },
-                {
-                    name = "ᴇxᴇᴄᴜᴛᴏʀ",
-                    value = "```" .. identifyexecutor() .. "```",
-                    inline = true
-                },
-                {
-                    name = "ʟᴇᴠᴇʟ",
-                    value = "```" .. le .. "```",
-                    inline = true
-                },
-                {
-                    name = "ᴊᴏʙ ɪᴅ:",
-                    value = "```" .. tostring(game.JobId) .. "```",
-                    inline = true
-                },
-                {
-                    name = "**Join Code**",
-                    value = "```lua" .. "\n" .. "game.ReplicatedStorage['__ServerBrowser']:InvokeServer('teleport','" .. game.JobId .. "')" .. "```",
-                   inline = false
-                },
-                {
-                    name = "sᴛᴀᴛᴜs",
-                    value = "```HYDROGEN H/2 ON TOP```",
-                    inline = true
-                }
-            }
-        }
-    }
+shared.LoaderTitle = 'Dizenxy Load✅' -- ใส่ชื่อ
+shared.LoaderKeyFrames = {
+   [1] = {1, 30}, -- [Time (s), Percentage] 
+   [2] = {3, 100} -- [เวลา, เปอร์เซ็น]
 }
 
-local jsonData = HttpService:JSONEncode(data)
-local webhookUrl = "https://discord.com/api/webhooks/1261210725137911888/qLpdNbCH88jVRhbWuX_sTAnByx1cEfnSqYZJq0lDdgvoTXCqP68x34XIw39MrYmDGrBm"
-local headers = {["Content-Type"] = "application/json"}
-request = http_request or request or HttpPost or fluxus.request or syn.request or Krnl.request or delta.request;
-local request = http_request or request or HttpPost or syn.request
-local final = {Url = webhookUrl, Body = jsonData, Method = "POST", Headers = headers}
+local Metadata = {
+	LoaderData = {
+		Name = (shared.LoaderTitle or 'A Loader'),
+		Colors = shared.LoaderColors or {
+			Main = Color3.fromRGB(24, 24, 24),
+			Topic = Color3.fromRGB(0, 135, 251),
+			Title = Color3.fromRGB(0, 135, 251),
+			LoaderBackground = Color3.fromRGB(30, 30, 30),
+			LoaderSplash = Color3.fromRGB(255, 255, 255)
+		}
+	},
+	Keyframes = shared.LoaderKeyFrames or {
+		[1] = {1, 10}, -- [Time (s), Percentage]
+		[2] = {2, 30},
+		[3] = {3, 60},
+		[4] = {2, 100}
+	}
+}
 
-local success, response = pcall(request, final)
-if success then
-    print("Profile information sent to Discord.")
-else
-    print("Failed to send profile information to Discord: " .. response)
+--
+local function tweenObject(object, speed, info)
+	game.TweenService:Create(object, TweenInfo.new(speed, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut), info):Play()
 end
-local NotificationLibrary = loadstring(game:HttpGet("https://raw.githubusercontent.com/lobox920/Notification-Library/Main/Library.lua"))()
-----------------------------------------------------------------------------------------------------------------------------------------------
+local function createObject(className, properties)
+	local instance = Instance.new(className)
+	local parent
+	for propertyName, propertyValue in pairs(properties) do
+		if propertyName ~= "Parent" then
+			instance[propertyName] = propertyValue
+		else
+			parent = propertyValue
+		end
+	end
+	instance.Parent = parent
+	return instance
+end
+
+
+local Core = createObject("ScreenGui", {
+	Name = "Core",
+	Parent = game.CoreGui
+})
+local Main = createObject("Frame", {
+	Name = "Main",
+	Parent = Core,
+	BackgroundColor3 = Metadata.LoaderData.Colors.Main,
+	BorderSizePixel = 0,
+	ClipsDescendants = true,
+	Position = UDim2.new(0.5, 0, 0.5, 0),
+	AnchorPoint = Vector2.new(0.5, 0.5),
+	Size = UDim2.new(0, 0, 0, 0),
+})
+local Top = createObject("TextLabel", {
+	Name = "Top",
+	TextTransparency = 1,
+	Parent = Main,
+	BackgroundColor3 = Color3.fromRGB(255, 255, 255),
+	BackgroundTransparency = 1,
+	Position = UDim2.new(0, 30, 0, 8),
+	Size = UDim2.new(0, 301, 0, 50),
+	Font = Enum.Font.Gotham,
+	Text = "Loader",
+	TextColor3 = Metadata.LoaderData.Colors.Topic,
+	TextSize = 10,
+	TextXAlignment = Enum.TextXAlignment.Left,
+})
+local Title = createObject("TextLabel", {
+	Name = "Title",
+	Parent = Main,
+	TextTransparency = 1,
+	BackgroundColor3 = Color3.fromRGB(255, 255, 255),
+	BackgroundTransparency = 1,
+	Position = UDim2.new(0, 30, 0, 27),
+	Size = UDim2.new(0, 301, 0, 46),
+	Font = Enum.Font.Gotham,
+	RichText = true,
+	Text = "<b>" .. Metadata.LoaderData.Name .. "</b>",
+	TextColor3 = Metadata.LoaderData.Colors.Title,
+	TextSize = 14,
+	TextXAlignment = Enum.TextXAlignment.Left,
+})
+local BG = createObject("Frame", {
+	Name = "BG",
+	Parent = Main,
+	AnchorPoint = Vector2.new(0.5, 0),
+	BackgroundTransparency = 1,
+	BackgroundColor3 = Metadata.LoaderData.Colors.LoaderBackground,
+	BorderSizePixel = 0,
+	Position = UDim2.new(0.5, 0, 0, 70),
+	Size = UDim2.new(0.8500000238418579, 0, 0, 24),
+})
+local Progress = createObject("Frame", {
+	Name = "Progress",
+	Parent = BG,
+	BackgroundColor3 = Metadata.LoaderData.Colors.LoaderSplash,
+	BackgroundTransparency = 1,
+	BorderSizePixel = 0,
+	Size = UDim2.new(0, 0, 0, 24),
+})
+
+local function updatePercentage(percentage)
+	tweenObject(Progress, 0.5, {
+		Size = UDim2.new((percentage / 100), 0, 0, 24)
+	})
+end
+
+
+-- Loader itself
+tweenObject(Main, 0.25, {
+	Size = UDim2.new(0, 346, 0, 121)
+})
+wait(0.25)
+tweenObject(Top, 0.5, {
+	TextTransparency = 0
+})
+tweenObject(Title, 0.5, {
+	TextTransparency = 0
+})
+tweenObject(BG, 0.5, {
+	BackgroundTransparency = 0
+})
+tweenObject(Progress, 0.5, {
+	BackgroundTransparency = 0
+})
+
+for i, v in pairs(Metadata.Keyframes) do
+	wait(v[1]);
+	updatePercentage(v[2])
+end
+updatePercentage(100)
+
+tweenObject(Top, 0.5, {
+	TextTransparency = 1
+})
+tweenObject(Title, 0.5, {
+	TextTransparency = 1
+})
+tweenObject(BG, 0.5, {
+	BackgroundTransparency = 1
+})
+tweenObject(Progress, 0.5, {
+	BackgroundTransparency = 1
+})
+wait(0.5)
+tweenObject(Main, 0.25, {
+	Size = UDim2.new(0, 0, 0, 0)
+})
+wait(0.25);
+Core:Destroy()
+---------------------------------------------------------------------------------------------------------------------------------------------
+local Fluent = loadstring(game:HttpGet("https://raw.githubusercontent.com/heatdeck123/UI-Lib/main/robloxscripts/main%20flunet"))()
+local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/heatdeck123/UI-Lib/main/robloxscripts/fluent%20save"))()
+local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/heatdeck123/UI-Lib/main/robloxscripts/fluent%20interface"))()
+---------------------------------------------------------------------------------------------------------------------------------------------
 local Window = Fluent:CreateWindow({
-    Title = "HYDROGEN H/2 75% Viet Hub | By Nguyễn Trí Tài",
-    SubTitle = "Phiên Bản 9.0",
+    Title = "Bap Mod Game 75% Viet Lot Hub | NL Nguyễn Trí Tài NT Ngô Văn Minh",
+    SubTitle = "Chúc Sử Dụng Script Vui Vẻ",
     TabWidth = 160,
     Size = UDim2.fromOffset(500, 320),
     Acrylic = true,
@@ -84,7 +172,7 @@ local Tabs = {
     Main = Window:AddTab({ Title = "Chính", Icon = "cherry" }),
     Setting = Window:AddTab({ Title = "Setting", Icon = "cherry" }),
     Stats = Window:AddTab({ Title = "Chỉ Số", Icon = "cherry" }),
-    Player = Window:AddTab({ Title = "Thành Viên", Icon = "cherry" }),
+    Player = Window:AddTab({ Title = "Người Chơi", Icon = "cherry" }),
     Teleport = Window:AddTab({ Title = "Đảo", Icon = "cherry" }),
     Fruit = Window:AddTab({ Title = "Trái Cây", Icon = "cherry" }),
     Raid = Window:AddTab({ Title = "Thức Tỉnh", Icon = "cherry" }),
@@ -2560,7 +2648,7 @@ ImageButton.BorderSizePixel = 0
 ImageButton.Position = UDim2.new(0.120833337, 0, 0.0952890813, 0)
 ImageButton.Size = UDim2.new(0, 50, 0, 50)
 ImageButton.Draggable = true
-ImageButton.Image = "http://www.roblox.com/asset/?id=17094709022"
+ImageButton.Image = "http://www.roblox.com/asset/?id=18735998414"
 ImageButton.MouseButton1Down:connect(function()
     game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.End,false,game)
 end)
@@ -2578,17 +2666,12 @@ end
 --Create Tabs
 Tabs.info:AddParagraph({
         Title = "Owner",
-        Content = "! Tai Siu"
-    })
-
-Tabs.info:AddParagraph({
-        Title = "Upadate",
-        Content = "Version 3.1"
+        Content = "Bap Mod Game"
     })
     
- Tabs.info:AddParagraph({
-        Title = "Chất Lượng Hàng Đầu",
-        Content = ""
+Tabs.info:AddParagraph({
+        Title = "Script Chất Lượng Top 5 Hàng Đầu Việt Nam",
+        Content = "Nhận Cho Thuê Script"
     })
     
 local Farming = Tabs.Main:AddSection("Farming")
@@ -2599,7 +2682,7 @@ local listfastattack = {'Normal Attack','Fast Attack','Super Fast Attack'}
         Description = "Chọn Tốc Độ Đánh",
         Values = listfastattack,
         Multi = false,
-        Default = 0.1,
+        Default = 0.9,
     })
     DropdownDelayAttack:SetValue("Fast Attack")
     DropdownDelayAttack:OnChanged(function(Value)
@@ -7459,7 +7542,7 @@ spawn(function()
         elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709143733" then
             Hop()
             Fluent:Notify({
-                Title = "Fai Fao Hub",
+                Title = "Tri Minh Hub",
                 Content = "Turn Off Find Full Moon...",
                 SubContent = "", -- Optional
                 Duration = 5 -- Set to nil to make the notification not disappear
@@ -7467,7 +7550,7 @@ spawn(function()
         elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709150401" then
             Hop()
             Fluent:Notify({
-                Title = "Fai Fao Hub",
+                Title = "Tri Minh Hub",
                 Content = "Hop...",
                 SubContent = "", -- Optional
                 Duration = 5 -- Set to nil to make the notification not disappear
@@ -7475,7 +7558,7 @@ spawn(function()
         elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709149680" then
             Hop()
             Fluent:Notify({
-                Title = "Fai Fao Hub",
+                Title = "Tri Minh Hub",
                 Content = "Hop...",
                 SubContent = "", -- Optional
                 Duration = 5 -- Set to nil to make the notification not disappear
@@ -7510,8 +7593,8 @@ end)
 end
 ----------------------------------------------------------------------------------------------------------------------------------------------
 Fluent:Notify({
-    Title = "Developer X-sea OFFICAL",
+    Title = "Delay 9S",
     Content = "The script has been loaded.",
     Durtion = 9
 })
-warn("SUPPORT SERVER DISCORD https://discord.com/invite/SVmt8hUBzR! My Nick Name ! Béo Biên Hòa")
+warn("SUPPORT SERVER DISCORD https://discord.com/invite/SVmt8hUBzR! Nhận Cho Thuê Script")
