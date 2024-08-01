@@ -69,12 +69,12 @@ else
     print("Failed to send profile information to Discord: " .. response)
 end
 ----------------------------------------------------------------------------------------------------------------------------------------------
-local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
-local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))()
-local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
+local Fluent = loadstring(game:HttpGet("https://raw.githubusercontent.com/heatdeck123/UI-Lib/main/robloxscripts/main%20flunet"))()
+local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/heatdeck123/UI-Lib/main/robloxscripts/fluent%20save"))()
+local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/heatdeck123/UI-Lib/main/robloxscripts/fluent%20interface"))()
 ----------------------------------------------------------------------------------------------------------------------------------------------
 local Window = Fluent:CreateWindow({
-    Title = "Bap Mod Game Hub | Blox Fruits",
+    Title = "Ak Hub | Blox Fruits",
     SubTitle = "Version 3.1",
     TabWidth = 160,
     Size = UDim2.fromOffset(500, 320),
@@ -89,6 +89,7 @@ local Tabs = {
     Stats = Window:AddTab({ Title = "Chỉ Số", Icon = "cherry" }),
     Player = Window:AddTab({ Title = "Người Chơi", Icon = "cherry" }),
     Teleport = Window:AddTab({ Title = "Đảo", Icon = "cherry" }),
+    Sea Even = Window:AddTab({ Title = "Sea", Icon = "cherry" }),
     Fruit = Window:AddTab({ Title = "Trái Cây", Icon = "cherry" }),
     Raid = Window:AddTab({ Title = "Thức Tỉnh", Icon = "cherry" }),
     Race = Window:AddTab({ Title = "Thức Tỉnh v4", Icon = "cherry" }),
@@ -2563,7 +2564,7 @@ ImageButton.BorderSizePixel = 0
 ImageButton.Position = UDim2.new(0.120833337, 0, 0.0952890813, 0)
 ImageButton.Size = UDim2.new(0, 50, 0, 50)
 ImageButton.Draggable = true
-ImageButton.Image = "http://www.roblox.com/asset/?id=18735998414"
+ImageButton.Image = "http://www.roblox.com/asset/?id=18737910294"
 ImageButton.MouseButton1Down:connect(function()
     game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.End,false,game)
 end)
@@ -3541,7 +3542,7 @@ local boss = Tabs.Main:AddSection("Boss Farm")
         end
         end
       end)
-
+--//sea even
       if Third_Sea then
       local RoughSea = Tabs.Main:AddSection("Kitsune")
 	 
@@ -6845,6 +6846,19 @@ end)
 
 --------------------------------------------------------------------------------------------------------------------------------------------
 --shop
+    if World2 or World3 then
+    S:AddSeperator("Fragments")
+
+S:AddButton("Reset Stats (Use 2.5K Fragments)", function()
+    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward","Refund","1")
+    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward","Refund","2")
+end)
+
+S:AddButton("Random Race (Use 3K Fragments)", function()
+	game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward","Reroll","1")
+	game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward","Reroll","2")
+end)
+end
 
 
 
@@ -7353,7 +7367,7 @@ Tabs.Misc:AddButton({
 		for k, v in pairs(cac) do
 			if ListHuhu[v] and game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buy" .. v, true) == 1 then
 				local huhu = Instance.new("ImageLabel", MeleeG)
-				huhu.Image = "rbxassetid://18735998414"
+				huhu.Image = "rbxassetid://18737910294"
 				huhu.ImageRectSize = Vector2.new(100, 100)
 				huhu.ImageRectOffset = ListHuhu[v] * 100
 			end
