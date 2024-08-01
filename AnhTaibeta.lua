@@ -69,8 +69,6 @@ else
     print("Failed to send profile information to Discord: " .. response)
 end
 ----------------------------------------------------------------------------------------------------------------------------------------------
-local XSeaLib = loadstring(game:HttpGet("https://raw.githubusercontent.com/XRayDerxDOne/LoaderrMainX/main/Source.lua.txt"))()
-----------------------------------------------------------------------------------------------------------------------------------------------
 local Window = Fluent:CreateWindow({
     Title = "Trí Minh Hub | Blox Fruits",
     SubTitle = "Version 3.1",
