@@ -47,7 +47,7 @@ local data = {
                 },
                 {
                     name = "sᴛᴀᴛᴜs",
-                    value = "```Thank you for using the hack script```",
+                    value = "```Nhận Làm Script Và Thuê Script```",
                     inline = true
                 }
             }
@@ -69,8 +69,12 @@ else
     print("Failed to send profile information to Discord: " .. response)
 end
 ----------------------------------------------------------------------------------------------------------------------------------------------
+local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
+local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))()
+local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
+----------------------------------------------------------------------------------------------------------------------------------------------
 local Window = Fluent:CreateWindow({
-    Title = "Trí Minh Hub | Blox Fruits",
+    Title = "Bap Mod Game Hub | Blox Fruits",
     SubTitle = "Version 3.1",
     TabWidth = 160,
     Size = UDim2.fromOffset(500, 320),
