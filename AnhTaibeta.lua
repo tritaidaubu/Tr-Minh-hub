@@ -68,8 +68,8 @@ if success then
 else
     print("Failed to send profile information to Discord: " .. response)
 end
+local SolarisLib = loadstring(game:HttpGet("https://raw.githubusercontent.com/kickTh/New-Ui/main/SolarisLib.lua.txt"))()
 
-local XSeaLib = loadstring(game:HttpGet("https://raw.githubusercontent.com/XRayDerxDOne/LoaderrMainX/main/Source.lua.txt"))()
 ----------------------------------------------------------------------------------------------------------------------------------------------
 local Window = Fluent:CreateWindow({
     Title = "Trí Minh Hub | Blox Fruits",
