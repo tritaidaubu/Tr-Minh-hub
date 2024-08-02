@@ -2546,12 +2546,6 @@ local listfastattack = {'Normal Attack','Fast Attack','Super Fast Attack'}
 	end
 end)
 
-   local Toggle = Tabs.Settings:AddToggle("MyToggle", {Title = "Auto Click", Default = false })
-   
-   local Toggle = Tabs.RC:AddToggle("MyToggle", {Title = "Auto Complete Trial V4", Default = false })
-   
-   local Toggle = Tabs.Settings:AddToggle("MyToggle", {Title = "Auto Haki", Default = true })
-   
     local DropdownSelectWeapon = Tabs.Main:AddDropdown("DropdownSelectWeapon", {
         Title = "Weapon",
         Description = "Chọn Vũ Khí",
