@@ -12,11 +12,7 @@ then
 if game:IsLoaded() then
 
 ----------------------------------------------------------------------------------------------------------------------------------------------
-local a = "https://raw.githubusercontent.com/"
-    local b = "bot21333/C-/main/"
-    local a = a .. b .. "/C__%23%23.lua"
-    local a = loadstring(game:HttpGet(a))()
-    pcall(
+local redzlib = loadstring(game:HttpGet("https://raw.githubusercontent.com/REDzHUB/RedzLibV5/main/Source.Lua"))()
 ----------------------------------------------------------------------------------------------------------------------------------------------
 local Window = Fluent:CreateWindow({
     Title = "Bap Mod Game Hub",
